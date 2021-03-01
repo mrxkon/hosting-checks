@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Hosting Checks
  * Plugin URI:        https://github.com/mrxkon/hosting-checks
- * Description:       PHP & MySQL tests for Hosting.
+ * Description:       PHP, MySQL & $wpdb tests for Hosting.
  * Version:           1.0.0
  * Required at least: 5.0
  * Requires PHP:      7.0
@@ -108,75 +108,44 @@ class Hosting_Checks {
 
 		// Create the admin menus.
 		Menu::create();
-
-		// Scripts & Styles.
-		add_action( 'admin_enqueue_scripts', array( $this, 'styles_and_scripts' ) );
-
-		// Add Rest API endpoints.
-		add_action( 'rest_api_init', array( '\\Xkon\\Hosting_Checks\\REST\\Routes', 'register' ) );
 	}
 
 	/**
 	 * Runs on plugin activation.
-	 */
-	public static function on_plugin_activation() {}
-
-	/**
-	 * Styles and scripts.
-	 *
-	 * @param string $hook_suffix
-	 */
-	public function styles_and_scripts( $hook_suffix ) {
-		wp_enqueue_style(
-			'hosting-checks',
-			self::$url . 'css/styles.css',
-			array(),
-			self::$version
-		);
-
-		wp_enqueue_script(
-			'hosting-checks',
-			self::$url . 'js/scripts.js',
-			array( 'jquery' ),
-			self::$version,
-			true
-		);
-
-		wp_localize_script(
-			'hosting-checks',
-			'plugin_tpl_globals',
-			array(
-				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'hosting-checks' ),
-			)
-		);
-	}
-
-	/**
 	 * Runs on plugin deactivation.
-	 */
-	public static function on_plugin_deactivation() {}
-
-	/**
 	 * Runs on plugin uninstall.
 	 */
-	public static function on_plugin_uninstall() {}
+	public static function cleanup() {
+		global $wpdb;
+
+		$table       = $wpdb->prefix . 'options';
+		$option_name = 'hostingchecks_';
+
+		for ( $i = 0; $i < self::$wp_iterations; $i++ ) {
+			$query_result = $wpdb->delete(
+				$table,
+				array(
+					'option_name' => $option_name . $i,
+				)
+			);
+		}
+	}
 }
 
 /**
  * Activation Hook.
  */
-register_activation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_activation' ) );
+register_activation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'cleanup' ) );
 
 /**
  * Dectivation Hook.
  */
-register_deactivation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_deactivation' ) );
+register_deactivation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'cleanup' ) );
 
 /**
  * Uninstall Hook.
  */
-register_uninstall_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_uninstall' ) );
+register_uninstall_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'cleanup' ) );
 
 /**
  * Load plugin.
