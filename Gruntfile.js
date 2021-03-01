@@ -1,7 +1,5 @@
 module.exports = function( grunt ) {
 	var BUILD_DIR  = 'build/',
-		CSS_DIR    = 'css/',
-		JS_DIR     = 'js/',
 		PHP_DIR    = 'php/',
 		VENDOR_DIR = 'vendor/';
 
@@ -16,8 +14,6 @@ module.exports = function( grunt ) {
 			},
 			all: {
 				files: [
-					CSS_DIR + '**',
-					JS_DIR + '**',
 					PHP_DIR + '**',
 					'<%= pkg.name %>.php'
 				],
@@ -31,18 +27,6 @@ module.exports = function( grunt ) {
 			plugin: {
 				src: '<%= pkg.name %>.php',
 				dest: BUILD_DIR + '<%= pkg.name %>/',
-			},
-			css: {
-				expand: true,
-				cwd: CSS_DIR,
-				src: '**',
-				dest: BUILD_DIR + '<%= pkg.name %>/' + CSS_DIR,
-			},
-			js: {
-				expand: true,
-				cwd: JS_DIR,
-				src: '**',
-				dest: BUILD_DIR + '<%= pkg.name %>/' + JS_DIR,
 			},
 			php: {
 				expand: true,
@@ -85,8 +69,6 @@ module.exports = function( grunt ) {
 		[
 			'clean:all',
 			'copy:plugin',
-			'copy:css',
-			'copy:js',
 			'copy:php',
 			'copy:autoload',
 			'copy:composer'
