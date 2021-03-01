@@ -88,8 +88,6 @@ module.exports = function( grunt ) {
 			'copy:css',
 			'copy:js',
 			'copy:php',
-			'copy:analog',
-			'copy:psr',
 			'copy:autoload',
 			'copy:composer'
 		]
