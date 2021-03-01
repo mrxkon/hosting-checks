@@ -102,17 +102,14 @@ class Tests {
 
 		self::mysql();
 
-		$count_math = self::$func_iterations * count( self::$math_functions );
-		self::$results['math']['label']  = 'PHP Math (' . $count_math . ' iterations)';
-
+		$count_math   = self::$func_iterations * count( self::$math_functions );
 		$count_string = self::$func_iterations * count( self::$string_functions );
-		self::$results['string']['label']  = 'PHP String Manipulation (' . $count_string . ' iterations)';
+		$count_loop   = self::$loop_iterations * 2;
 
-		$count_loop = self::$loop_iterations * 2;
-		self::$results['loop']['label']  = 'PHP Loops (' . $count_loop . ' iterations)';
-
-		self::$results['ifelse']['label']  = 'PHP If-Elseif-Elseif (' . self::$loop_iterations . ' iterations)';
-
+		self::$results['math']['label']   = 'PHP Math (' . $count_math . ' iterations)';
+		self::$results['string']['label'] = 'PHP String Manipulation (' . $count_string . ' iterations)';
+		self::$results['loop']['label']   = 'PHP Loops (' . $count_loop . ' iterations)';
+		self::$results['ifelse']['label'] = 'PHP If-Elseif-Elseif (' . self::$loop_iterations . ' iterations)';
 		self::$results['total']['label']  = 'Total time';
 		self::$results['total']['result'] = self::calculate_time( $start_time );
 
@@ -200,21 +197,25 @@ class Tests {
 	 * MySQL test.
 	 */
 	private static function mysql() {
-		$start_time = microtime(true);
+		$start_time = microtime( true );
 
 		$host = explode( ':', DB_HOST );
 
+		// phpcs:ignore WordPress.DB.RestrictedFunctions.mysql_mysqli_connect
 		$db = mysqli_connect( $host[0], DB_USER, DB_PASSWORD, DB_NAME, $host[1] );
 
-		self::$results['mysql_connect']['label'] = 'MySQL Connect';
+		self::$results['mysql_connect']['label']  = 'MySQL Connect';
 		self::$results['mysql_connect']['result'] = self::calculate_time( $start_time );
 
-		$query  = "SELECT BENCHMARK( 1000000, ENCODE( 'Hello World!', RAND() ) );";
+		$query = "SELECT BENCHMARK( 1000000, ENCODE( 'Hello & Goodbye!', RAND() ) );";
+
+		// phpcs:ignore WordPress.DB.RestrictedFunctions.mysql_mysqli_query
 		$result = mysqli_query( $db, $query );
 
-		self::$results['mysql_query']['label'] = 'MySQL Benchmark Query';
+		self::$results['mysql_query']['label']  = 'MySQL Benchmark Query';
 		self::$results['mysql_query']['result'] = self::calculate_time( $start_time );
 
+		// phpcs:ignore WordPress.DB.RestrictedFunctions.mysql_mysqli_close
 		mysqli_close( $db );
 	}
 }

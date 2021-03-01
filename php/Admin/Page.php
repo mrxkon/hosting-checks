@@ -32,14 +32,14 @@ class Page {
 			<table class="form-table" role="presentation">
 				<tbody>
 				<?php
-					$results = Tests::run_tests();
+				$results = Tests::run_tests();
 
-					foreach ( $results as $result ) {
-						echo '<tr>';
-							echo '<th scope="row">' . $result['label'] . '</th>';
-							echo '<td>' . $result['result'] . ' seconds</td>';
-						echo '</tr>';
-					}
+				foreach ( $results as $result ) {
+					echo '<tr>';
+						echo '<th scope="row">' . $result['label'] . '</th>';
+						echo '<td>' . $result['result'] . ' seconds</td>';
+					echo '</tr>';
+				}
 				?>
 				</tbody>
 			</table>
