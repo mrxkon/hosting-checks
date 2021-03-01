@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name:       Plugin - Template
+ * Plugin Name:       Hosting Checks
  * Plugin URI:        https://github.com/mrxkon/hosting-checks
- * Description:       Plugin - Template
+ * Description:       PHP & MySQL tests for Hosting.
  * Version:           1.0.0
  * Required at least: 5.0
  * Requires PHP:      7.0
