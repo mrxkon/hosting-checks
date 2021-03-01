@@ -1,8 +1,5 @@
 /vendor
 /node_modules
-/.github
 /build
-/.vscode
-/.idea
 composer.lock
 package-lock.json
