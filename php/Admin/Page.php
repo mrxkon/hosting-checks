@@ -9,6 +9,7 @@ namespace Xkon\Hosting_Checks\Admin;
  * Import necessary classes.
  */
 use Xkon\Hosting_Checks\Logger;
+use Xkon\Hosting_Checks\Tests;
 
 /**
  * Check that the file is not accessed directly.
@@ -28,24 +29,21 @@ class Page {
 		?>
 		<div class="wrap">
 			<h1><?php echo get_admin_page_title(); ?></h1>
+			<table class="form-table" role="presentation">
+				<tbody>
+				<?php
+					$results = Tests::run_tests();
+
+					foreach ( $results as $result ) {
+						echo '<tr>';
+							echo '<th scope="row">' . $result['label'] . '</th>';
+							echo '<td>' . $result['result'] . ' seconds</td>';
+						echo '</tr>';
+					}
+				?>
+				</tbody>
+			</table>
 		</div>
 		<?php
-
-		// Logger tests.
-		$one = array(
-			'one',
-			'two',
-			'three',
-		);
-		$two = array(
-			'one' => 'one',
-			'two' => 'two',
-			'three' => 123,
-		);
-		Logger::log( 'my string' );
-		Logger::log( '123 string' );
-		Logger::log( 123 );
-		Logger::log( $one );
-		Logger::log( $two );
 	}
 }

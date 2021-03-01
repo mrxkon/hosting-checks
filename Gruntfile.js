@@ -50,18 +50,6 @@ module.exports = function( grunt ) {
 				src: '**',
 				dest: BUILD_DIR + '<%= pkg.name %>/' + PHP_DIR,
 			},
-			analog: {
-				expand: true,
-				cwd: VENDOR_DIR + 'analog',
-				src: '**',
-				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'analog',
-			},
-			psr: {
-				expand: true,
-				cwd: VENDOR_DIR + 'psr',
-				src: '**',
-				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'psr',
-			},
 			autoload: {
 				src: VENDOR_DIR + 'autoload.php',
 				dest: BUILD_DIR + '<%= pkg.name %>/' + VENDOR_DIR + 'autoload.php',
