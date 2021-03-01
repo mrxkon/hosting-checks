@@ -119,24 +119,7 @@ class Hosting_Checks {
 	/**
 	 * Runs on plugin activation.
 	 */
-	public static function on_plugin_activation() {
-		// Use this functionality to require other plugins to be installed as well.
-
-		/*
-		$active_plugins   = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
-		$required_plugins = array(
-			'some-plugin/some-plugin.php',
-			'woocommerce/woocommerce.php',
-		);
-
-		foreach ( $required_plugins as $required_plugin ) {
-			preg_match( '#^(.*)(?:\/.*)#', $required_plugin, $matches );
-			if ( ! in_array( $required_plugin, $active_plugins, true ) ) {
-				wp_die( 'Sorry, but this plugin requires ' . $matches[1] . '. <a href="' . admin_url( 'plugins.php' ) . '">Return to Plugins.</a>' );
-			}
-		}
-		*/
-	}
+	public static function on_plugin_activation() {}
 
 	/**
 	 * Styles and scripts.
@@ -172,9 +155,7 @@ class Hosting_Checks {
 	/**
 	 * Runs on plugin deactivation.
 	 */
-	public static function on_plugin_deactivation() {
-		Logger::log( 'Deactivating plugin.' );
-	}
+	public static function on_plugin_deactivation() {}
 
 	/**
 	 * Runs on plugin uninstall.
