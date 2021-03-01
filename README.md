@@ -1,10 +1,10 @@
-## plugin-tpl
+## hosting-checks
 
 Re-creating the same setup every time is annoying so I thought of creating an easy to use (for me at least :D) template.
 
 ---
 
-![Tests](https://github.com/mrxkon/plugin-tpl/workflows/Checks/badge.svg)
+![Tests](https://github.com/mrxkon/hosting-checks/workflows/Checks/badge.svg)
 [![PHP Compatibility 7.0+](https://img.shields.io/badge/PHP%20Compatibility-7.0+-8892BF)](https://github.com/PHPCompatibility/PHPCompatibility)
 [![WordPress Coding Standards](https://img.shields.io/badge/WordPress%20Coding%20Standards-latest-blue)](https://github.com/WordPress/WordPress-Coding-Standards)
 
@@ -12,7 +12,7 @@ Re-creating the same setup every time is annoying so I thought of creating an ea
 
 `composer install && npm install`
 
-Search and replace the instances of `plugin-tpl`
+Search and replace the instances of `hosting-checks`
 
 #### Available commands
 - `npm run lint` - Runs all lints.

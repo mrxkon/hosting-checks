@@ -3,7 +3,7 @@
 /**
  * Set namespace.
  */
-namespace Xkon\Plugin_Tpl\Admin;
+namespace Xkon\Hosting_Checks\Admin;
 
 /**
  * Check that the file is not accessed directly.
@@ -23,7 +23,7 @@ class Menu {
 		add_action(
 			'admin_menu',
 			array(
-				'\\Xkon\\Plugin_Tpl\\Admin\\Menu',
+				'\\Xkon\\Hosting_Checks\\Admin\\Menu',
 				'populate',
 			)
 		);
@@ -34,11 +34,11 @@ class Menu {
 	 */
 	public static function populate() {
 		add_menu_page(
-			'Plugin Tpl Page Title',
-			'Plugin Tpl',
+			'Hosting Checks',
+			'Hosting Checks',
 			'manage_options',
-			'plugin-tpl',
-			array( '\\Xkon\\Plugin_Tpl\\Admin\\Page', 'load' ),
+			'hosting-checks',
+			array( '\\Xkon\\Hosting_Checks\\Admin\\Page', 'load' ),
 			'dashicons-yes-alt'
 		);
 	}

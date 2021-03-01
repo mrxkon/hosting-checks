@@ -3,7 +3,7 @@
 /**
  * Set namespace.
  */
-namespace Xkon\Plugin_Tpl;
+namespace Xkon\Hosting_Checks;
 
 /**
  * Import necessary classes.
@@ -29,7 +29,7 @@ class Logger {
 	 * @return string
 	 */
 	public static function log_file() {
-		return wp_normalize_path( WP_CONTENT_DIR . '/' . 'plugin-tpl.log' );
+		return wp_normalize_path( WP_CONTENT_DIR . '/' . 'hosting-checks.log' );
 	}
 
 	/**
@@ -38,7 +38,7 @@ class Logger {
 	 * @return bool
 	 */
 	public static function should_log() {
-		return defined( 'PLUGIN_TPL_DEBUG' ) && PLUGIN_TPL_DEBUG ? true : false;
+		return defined( 'HOSTING_CHECKS_DEBUG' ) && HOSTING_CHECKS_DEBUG ? true : false;
 	}
 
 	/**

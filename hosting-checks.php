@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Plugin - Template
- * Plugin URI:        https://github.com/mrxkon/plugin-tpl
+ * Plugin URI:        https://github.com/mrxkon/hosting-checks
  * Description:       Plugin - Template
  * Version:           1.0.0
  * Required at least: 5.0
@@ -11,7 +11,7 @@
  * Author URI:        https://xkon.dev
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       plugin-tpl
+ * Text Domain:       hosting-checks
  *
  * Copyright (C) 2021-Present
  * Konstantinos Xenos (https://xkon.dev).
@@ -38,7 +38,7 @@ namespace Xkon;
 /**
  * Import necessary classes.
  */
-use Xkon\Plugin_Tpl\Admin\Menu;
+use Xkon\Hosting_Checks\Admin\Menu;
 
 /**
  * Check that the file is not accessed directly.
@@ -48,9 +48,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Class Plugin_Tpl.
+ * Class Hosting_Checks.
  */
-class Plugin_Tpl {
+class Hosting_Checks {
 	/**
 	 * The plugin version.
 	 *
@@ -75,7 +75,7 @@ class Plugin_Tpl {
 	/**
 	 * The plugin instanace.
 	 *
-	 * @var null|Plugin_Tpl $instance
+	 * @var null|Hosting_Checks $instance
 	 */
 	private static $instance = null;
 
@@ -113,7 +113,7 @@ class Plugin_Tpl {
 		add_action( 'admin_enqueue_scripts', array( $this, 'styles_and_scripts' ) );
 
 		// Add Rest API endpoints.
-		add_action( 'rest_api_init', array( '\\Xkon\\Plugin_Tpl\\REST\\Routes', 'register' ) );
+		add_action( 'rest_api_init', array( '\\Xkon\\Hosting_Checks\\REST\\Routes', 'register' ) );
 	}
 
 	/**
@@ -145,14 +145,14 @@ class Plugin_Tpl {
 	 */
 	public function styles_and_scripts( $hook_suffix ) {
 		wp_enqueue_style(
-			'plugin-tpl',
+			'hosting-checks',
 			self::$url . 'css/styles.css',
 			array(),
 			self::$version
 		);
 
 		wp_enqueue_script(
-			'plugin-tpl',
+			'hosting-checks',
 			self::$url . 'js/scripts.js',
 			array( 'jquery' ),
 			self::$version,
@@ -160,11 +160,11 @@ class Plugin_Tpl {
 		);
 
 		wp_localize_script(
-			'plugin-tpl',
+			'hosting-checks',
 			'plugin_tpl_globals',
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
-				'nonce'    => wp_create_nonce( 'plugin-tpl' ),
+				'nonce'    => wp_create_nonce( 'hosting-checks' ),
 			)
 		);
 	}
@@ -185,19 +185,19 @@ class Plugin_Tpl {
 /**
  * Activation Hook.
  */
-register_activation_hook( __FILE__, array( '\\Xkon\\Plugin_Tpl', 'on_plugin_activation' ) );
+register_activation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_activation' ) );
 
 /**
  * Dectivation Hook.
  */
-register_deactivation_hook( __FILE__, array( '\\Xkon\\Plugin_Tpl', 'on_plugin_deactivation' ) );
+register_deactivation_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_deactivation' ) );
 
 /**
  * Uninstall Hook.
  */
-register_uninstall_hook( __FILE__, array( '\\Xkon\\Plugin_Tpl', 'on_plugin_uninstall' ) );
+register_uninstall_hook( __FILE__, array( '\\Xkon\\Hosting_Checks', 'on_plugin_uninstall' ) );
 
 /**
  * Load plugin.
  */
-add_action( 'plugins_loaded', array( '\\Xkon\\Plugin_Tpl', 'get_instance' ) );
+add_action( 'plugins_loaded', array( '\\Xkon\\Hosting_Checks', 'get_instance' ) );

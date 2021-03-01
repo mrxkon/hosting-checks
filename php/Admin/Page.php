@@ -3,12 +3,12 @@
 /**
  * Set namespace.
  */
-namespace Xkon\Plugin_Tpl\Admin;
+namespace Xkon\Hosting_Checks\Admin;
 
 /**
  * Import necessary classes.
  */
-use Xkon\Plugin_Tpl\Logger;
+use Xkon\Hosting_Checks\Logger;
 
 /**
  * Check that the file is not accessed directly.

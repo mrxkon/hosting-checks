@@ -1,5 +1,5 @@
 {
-	"name": "xkon/plugin-tpl",
+	"name": "xkon/hosting-checks",
 	"description": "plugin template",
 	"type": "project",
 	"license": "GPL-2.0-or-later",
@@ -8,7 +8,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Xkon\\Plugin_Tpl\\": "php"
+			"Xkon\\Hosting_Checks\\": "php"
 		},
 		"exclude-from-classmap": [
 			"vendor/dealerdirect"

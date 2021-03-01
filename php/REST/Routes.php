@@ -3,7 +3,7 @@
 /**
  * Set namespace.
  */
-namespace Xkon\Plugin_Tpl\REST;
+namespace Xkon\Hosting_Checks\REST;
 
 /**
  * Import necessary classes.
@@ -26,11 +26,11 @@ class Routes {
 	 */
 	public static function register() {
 		register_rest_route(
-			'plugin-tpl/v1',
+			'hosting-checks/v1',
 			'/hello',
 			array(
 				'methods'             => \WP_REST_Server::EDITABLE,
-				'callback'            => array( '\\Xkon\\Plugin_Tpl\\REST\\Functions', 'hello' ),
+				'callback'            => array( '\\Xkon\\Hosting_Checks\\REST\\Functions', 'hello' ),
 				'permission_callback' => function () {
 					return current_user_can( 'manage_options' );
 				},

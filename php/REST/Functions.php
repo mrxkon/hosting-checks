@@ -3,7 +3,7 @@
 /**
  * Set namespace.
  */
-namespace Xkon\Plugin_Tpl\REST;
+namespace Xkon\Hosting_Checks\REST;
 
 /**
  * Import necessary classes.
