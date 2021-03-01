@@ -119,7 +119,7 @@ class Hosting_Checks {
 		global $wpdb;
 
 		$table       = $wpdb->prefix . 'options';
-		$option_name = 'hostingchecks_';
+		$option_name = 'hosting_checks_';
 
 		for ( $i = 0; $i < 300; $i++ ) {
 			$query_result = $wpdb->delete(

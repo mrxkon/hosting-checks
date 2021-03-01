@@ -240,7 +240,7 @@ class Tests {
 		global $wpdb;
 
 		$table           = $wpdb->prefix . 'options';
-		$option_name     = 'hostingchecks_';
+		$option_name     = 'hosting_checks_';
 		$coffee_text     = 'Crema, macchiato, cup whipped robusta decaffeinated wings iced extra est aromatic.';
 		$coffee_new_text = 'Iced, organic, frappuccino single shot white cultivar cappuccino blue mountain chicory organic instant flavour.';
 
